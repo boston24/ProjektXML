@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/css" href="studenci.css" ?>
+
+
+<!DOCTYPE carrental [
+        <!ELEMENT carrental (cars|employees|rentlog)*>
+        <!ELEMENT cars (car)*>
+        <!ELEMENT car (id|model|year|price|color)*>
+        <!ATTLIST car
+                brand CDATA #REQUIRED
+                class CDATA #REQUIRED
+                doors CDATA #REQUIRED
+                type CDATA #REQUIRED>
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT model (#PCDATA)>
+        <!ELEMENT year (#PCDATA)>
+        <!ELEMENT price (perHour|perDay)*>
+        <!ELEMENT perHour (#PCDATA)>
+        <!ELEMENT perDay (#PCDATA)>
+        <!ELEMENT color (#PCDATA)>
+        <!ELEMENT employees (employee)*>
+        <!ELEMENT employee (name|surname|phone|mail|address)*>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT surname (#PCDATA)>
+        <!ELEMENT phone (#PCDATA)>
+        <!ELEMENT mail (#PCDATA)>
+        <!ELEMENT address (city|street|postcode)*>
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT street (#PCDATA)>
+        <!ELEMENT postcode (#PCDATA)>
+        <!ELEMENT rentlog (rental)*>
+        <!ELEMENT rental (startdate|enddate|starttime|endtime)*>
+        <!ATTLIST rental
+                idcar CDATA #REQUIRED>
+        <!ELEMENT startdate (#PCDATA)>
+        <!ELEMENT enddate (#PCDATA)>
+        <!ELEMENT starttime (#PCDATA)>
+        <!ELEMENT endtime (#PCDATA)>
+        ]>
 
 <carrental>
     <cars>
-        <car class='standard' type='sedan' brand='Toyota' doors=5>
+        <car class='standard' type='sedan' brand='Toyota' doors='5'>
             <id>s1</id>
             <model>Prius</model>
             <year>2016</year>
@@ -13,7 +49,7 @@
             </price>
             <color>blue</color>
         </car>
-        <car class='standard' type='hatchback' brand='Honda' doors=5>
+        <car class='standard' type='hatchback' brand='Honda' doors='5'>
             <id>s2</id>
             <model>Civic</model>
             <year>2010</year>
@@ -23,7 +59,7 @@
             </price>
             <color>black</color>
         </car>
-        <car class='standard' type='sedan' brand='Ford' doors=5>
+        <car class='standard' type='sedan' brand='Ford' doors='5'>
             <id>s3</id>
             <model>Mondeo</model>
             <year>2012</year>
@@ -33,7 +69,7 @@
             </price>
             <color>grey</color>
         </car>
-        <car class='premium' type='sedan' brand='Mercedes' doors=5>
+        <car class='premium' type='sedan' brand='Mercedes' doors='5'>
             <id>p1</id>
             <model>C-Class</model>
             <year>2016</year>
@@ -43,7 +79,7 @@
             </price>
             <color>blue</color>
         </car>
-        <car class='standard' type='minivan' brand='Renault' doors=5>
+        <car class='standard' type='minivan' brand='Renault' doors='5'>
             <id>s4</id>
             <model>Scenic</model>
             <year>2015</year>
@@ -53,7 +89,7 @@
             </price>
             <color>white</color>
         </car>
-        <car class='premium' type='suv' brand='Volvo' doors=5>
+        <car class='premium' type='suv' brand='Volvo' doors='5'>
             <id>p2</id>
             <model>XC60</model>
             <year>2017</year>
@@ -63,7 +99,7 @@
             </price>
             <color>black</color>
         </car>
-        <car class='standard' type='van' brand='Mercedes' doors=5>
+        <car class='standard' type='van' brand='Mercedes' doors='5'>
             <id>s5</id>
             <model>Sprinter</model>
             <year>2016</year>
@@ -73,7 +109,7 @@
             </price>
             <color>yellow</color>
         </car>
-        <car class='standard' type='compact' brand='Fiat' doors=3>
+        <car class='standard' type='compact' brand='Fiat' doors='3'>
             <id>s6</id>
             <model>500</model>
             <year>2016</year>
@@ -83,7 +119,7 @@
             </price>
             <color>white</color>
         </car>
-        <car class='premium' type='coupe' brand='Ford' doors=3>
+        <car class='premium' type='coupe' brand='Ford' doors='3'>
             <id>p3</id>
             <model>Mustang</model>
             <year>2016</year>
@@ -93,7 +129,7 @@
             </price>
             <color>red</color>
         </car>
-        <car class='standard' type='minivan' brand='Ford' doors=5>
+        <car class='standard' type='minivan' brand='Ford' doors='5'>
             <id>s7</id>
             <model>C-MAX</model>
             <year>2010</year>
@@ -103,7 +139,7 @@
             </price>
             <color>purple</color>
         </car>
-        <car class='standard' type='compact' brand='Smart' doors=3>
+        <car class='standard' type='compact' brand='Smart' doors='3'>
             <id>s8</id>
             <model>Fortwo</model>
             <year>2016</year>
@@ -113,7 +149,7 @@
             </price>
             <color>blue</color>
         </car>
-        <car class='premium' type='pickup' brand='Ford' doors=3>
+        <car class='premium' type='pickup' brand='Ford' doors='3'>
             <id>p4</id>
             <model>F-150</model>
             <year>2018</year>
@@ -135,7 +171,7 @@
                 <city>Gdańsk</city>   
                 <street>Lęborska 11/13</street>
                 <postcode>12-234</postcode>
-            </adress>
+            </address>
         </employee>
         <employee>
             <name>Marek</name>
@@ -146,7 +182,7 @@
                 <city>Gdańsk</city>   
                 <street>Losowa 15A</street>
                 <postcode>12-265</postcode>
-            </adress>
+            </address>
         </employee>
         <employee>
             <name>Joanna</name>
@@ -157,7 +193,7 @@
                 <city>Sopot</city>   
                 <street>Niewiadoma 15/2</street>
                 <postcode>25-634</postcode>
-            </adress>
+            </address>
         </employee>
         <employee>
             <name>Mateusz</name>
@@ -168,39 +204,39 @@
                 <city>Gdynia</city>   
                 <street>Gdańska 12B</street>
                 <postcode>53-654</postcode>
-            </adress>
+            </address>
         </employee>
     </employees>
 
     <rentlog>
         <rental idcar='p2'>
-            <startdate>2020-04-20</stardate>
+            <startdate>2020-04-20</startdate>
             <enddate>2020-04-20</enddate>
-            <starttime>18:00</startime>
+            <starttime>18:00</starttime>
             <endtime>22:00></endtime>
         </rental>
         <rental idcar='ps2'>
-            <startdate>2020-05-20</stardate>
+            <startdate>2020-05-20</startdate>
             <enddate>2020-05-21</enddate>
-            <starttime>18:00</startime>
+            <starttime>18:00</starttime>
             <endtime>10:00></endtime>
         </rental>
         <rental idcar='s1'>
-            <startdate>2020-04-10</stardate>
+            <startdate>2020-04-10</startdate>
             <enddate>2020-04-11</enddate>
-            <starttime>10:00</startime>
+            <starttime>10:00</starttime>
             <endtime>10:00></endtime>
         </rental>
         <rental idcar='p5'>
-            <startdate>2020-04-25</stardate>
+            <startdate>2020-04-25</startdate>
             <enddate>2020-04-27</enddate>
-            <starttime>18:00</startime>
+            <starttime>18:00</starttime>
             <endtime>18:00></endtime>
         </rental>
         <rental idcar='p1'>
-            <startdate>2020-04-21</stardate>
+            <startdate>2020-04-21</startdate>
             <enddate>2020-04-21</enddate>
-            <starttime>12:00</startime>
+            <starttime>12:00</starttime>
             <endtime>18:00></endtime>
         </rental>
     </rentlog>

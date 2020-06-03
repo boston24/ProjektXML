@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="carrental">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="cars"/>
+                <xs:element ref="employees"/>
+                <xs:element ref="rentlog"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cars">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="car"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="car">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="model"/>
+                <xs:element ref="year"/>
+                <xs:element ref="price"/>
+                <xs:element ref="color"/>
+            </xs:sequence>
+            <xs:attribute name="brand" use="required" type="xs:NCName"/>
+            <xs:attribute name="class" use="required" type="xs:NCName"/>
+            <xs:attribute name="doors" use="required" type="xs:integer"/>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="id" type="xs:NCName"/>
+    <xs:element name="model" type="xs:NMTOKEN"/>
+    <xs:element name="year" type="xs:integer"/>
+    <xs:element name="price">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="perHour"/>
+                <xs:element ref="perDay"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="perHour" type="xs:integer"/>
+    <xs:element name="perDay" type="xs:integer"/>
+    <xs:element name="color" type="xs:NCName"/>
+    <xs:element name="employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="employee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="employee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"/>
+                <xs:element ref="surname"/>
+                <xs:element ref="phone"/>
+                <xs:element ref="mail"/>
+                <xs:element ref="address"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="name" type="xs:NCName"/>
+    <xs:element name="surname" type="xs:NCName"/>
+    <xs:element name="phone" type="xs:integer"/>
+    <xs:element name="mail" type="xs:string"/>
+    <xs:element name="address">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="city"/>
+                <xs:element ref="street"/>
+                <xs:element ref="postcode"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="city" type="xs:NCName"/>
+    <xs:element name="street" type="xs:string"/>
+    <xs:element name="postcode" type="xs:NMTOKEN"/>
+    <xs:element name="rentlog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="rental"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="rental">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="startdate"/>
+                <xs:element ref="enddate"/>
+                <xs:element ref="starttime"/>
+                <xs:element ref="endtime"/>
+            </xs:sequence>
+            <xs:attribute name="idcar" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="startdate" type="xs:NMTOKEN"/>
+    <xs:element name="enddate" type="xs:NMTOKEN"/>
+    <xs:element name="starttime" type="xs:NMTOKEN"/>
+    <xs:element name="endtime" type="xs:string"/>
+</xs:schema>
