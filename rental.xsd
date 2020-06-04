@@ -1,104 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    <xs:element name="carrental">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="cars"/>
-                <xs:element ref="employees"/>
-                <xs:element ref="rentlog"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="cars">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="car"/>
-            </xs:sequence>
-            <xs:attribute name="class" use="required" type="xs:NCName"/>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="car">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="id"/>
-                <xs:element ref="model"/>
-                <xs:element ref="year"/>
-                <xs:element ref="price"/>
-                <xs:element ref="color"/>
-            </xs:sequence>
-            <xs:attribute name="brand" use="required" type="xs:NCName"/>
-            <xs:attribute name="doors" use="required" type="xs:integer"/>
-            <xs:attribute name="type" use="required" type="xs:NCName"/>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="id" type="xs:NCName"/>
-    <xs:element name="model" type="xs:NMTOKEN"/>
-    <xs:element name="year" type="xs:integer"/>
-    <xs:element name="price">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="perHour"/>
-                <xs:element ref="perDay"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="perHour" type="xs:integer"/>
-    <xs:element name="perDay" type="xs:integer"/>
-    <xs:element name="color" type="xs:NCName"/>
-    <xs:element name="employees">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="employee"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="employee">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="name"/>
-                <xs:element ref="surname"/>
-                <xs:element ref="phone"/>
-                <xs:element ref="mail"/>
-                <xs:element ref="address"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="name" type="xs:NCName"/>
-    <xs:element name="surname" type="xs:NCName"/>
-    <xs:element name="phone" type="xs:integer"/>
-    <xs:element name="mail" type="xs:string"/>
-    <xs:element name="address">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="city"/>
-                <xs:element ref="street"/>
-                <xs:element ref="postcode"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="city" type="xs:NCName"/>
-    <xs:element name="street" type="xs:string"/>
-    <xs:element name="postcode" type="xs:NMTOKEN"/>
-    <xs:element name="rentlog">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="rental"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="rental">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="startdate"/>
-                <xs:element ref="starttime"/>
-                <xs:element ref="enddate"/>
-                <xs:element ref="endtime"/>
-            </xs:sequence>
-            <xs:attribute name="idcar" use="required" type="xs:NCName"/>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="startdate" type="xs:NMTOKEN"/>
-    <xs:element name="starttime" type="xs:NMTOKEN"/>
-    <xs:element name="enddate" type="xs:NMTOKEN"/>
-    <xs:element name="endtime" type="xs:NMTOKEN"/>
-</xs:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <!-- SIMPLE TYPES -->
+    
+    <xsd:element name="model" type="xsd:string"/>
+    <xsd:element name="perHour" type="xsd:integer"/>
+    <xsd:element name="perDay" type="xsd:integer"/>
+    <xsd:element name="color" type="xsd:string"/>
+    <xsd:element name="startdate" type="xsd:date"/>
+    <xsd:element name="starttime" type="xsd:NMTOKEN"/>
+    <xsd:element name="enddate" type="xsd:date"/>
+    <xsd:element name="endtime" type="xsd:NMTOKEN"/>
+
+    <xsd:element name="id">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[ps][0-9]+"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="year">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:integer">
+                <xsd:pattern value="[12][67890][0-9][0-9]"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="name" type="xsd:string"/>
+    <xsd:element name="surname" type="xsd:string"/>
+
+    <xsd:element name="phone">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:integer">
+                <xsd:pattern value="[0-9]{9}"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="mail">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[^@]+@[^\.]+\..+"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="postcode">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[0-9]{2}[-][0-9]{3}"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:element>
+    
+    
+    <!-- ATTRIBUTES -->
+
+     <xsd:attribute name="class">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="standard"/>
+                <xsd:enumeration value="premium"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+    <xsd:attribute name="doors">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="3"/>
+                <xsd:enumeration value="5"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+    <xsd:attribute name="type">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="sedan"/>
+                <xsd:enumeration value="hatchback"/>
+                <xsd:enumeration value="minivan"/>
+                <xsd:enumeration value="van"/>
+                <xsd:enumeration value="compact"/>
+                <xsd:enumeration value="pickup"/>
+                <xsd:enumeration value="suv"/>
+                <xsd:enumeration value="coupe"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+    <xsd:attribute name="idcar">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[ps][0-9]+"/>
+            </xsd:restriction>
+        </xsd:simpleType>
+    </xsd:attribute>
+
+    <!-- COMPLEX TYPES -->
+    
+    <xsd:element name="carrental">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="cars"/>
+                <xsd:element ref="employees"/>
+                <xsd:element ref="rentlog"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:key name="car-key">
+            <xsd:selector xpath="./cars/car"/>
+            <xsd:field xpath="./id"/>
+        </xsd:key>
+        <xsd:keyref name="carRef" refer="car-key">
+            <xsd:selector xpath="rentlog/rental"/>
+            <xsd:field xpath="@idcar"/>
+        </xsd:keyref>
+    </xsd:element>
+    
+    <xsd:element name="cars">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="car"/>
+            </xsd:sequence>
+            <xsd:attribute ref="class" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="car">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="id"/>
+                <xsd:element ref="model"/>
+                <xsd:element ref="year"/>
+                <xsd:element ref="price"/>
+                <xsd:element ref="color"/>
+            </xsd:sequence>
+            <xsd:attribute name="brand" use="required" type="xsd:string"/>
+            <xsd:attribute ref="doors" use="required"/>
+            <xsd:attribute ref="type" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="price">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="perHour"/>
+                <xsd:element ref="perDay"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="employees">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="employee"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="employee">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="name"/>
+                <xsd:element ref="surname"/>
+                <xsd:element ref="phone"/>
+                <xsd:element ref="mail"/>
+                <xsd:element ref="address"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="address">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="city"/>
+                <xsd:element ref="street"/>
+                <xsd:element ref="postcode"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="city" type="xsd:string"/>
+    <xsd:element name="street" type="xsd:string"/>
+  
+
+    <xsd:element name="rentlog">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="rental"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="rental">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="startdate"/>
+                <xsd:element ref="starttime"/>
+                <xsd:element ref="enddate"/>
+                <xsd:element ref="endtime"/>
+            </xsd:sequence>        
+            <xsd:attribute ref="idcar" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

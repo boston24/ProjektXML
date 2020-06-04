@@ -1,0 +1,34 @@
+<!ELEMENT carrental (cars|employees|rentlog)*>
+<!ELEMENT cars (car)*>
+<!ATTLIST cars
+        class CDATA #REQUIRED>
+<!ELEMENT car (id|model|year|price|color)*>
+<!ATTLIST car
+        brand CDATA #REQUIRED
+        doors CDATA #REQUIRED
+        type CDATA #REQUIRED>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT model (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT price (perHour|perDay)*>
+<!ELEMENT perHour (#PCDATA)>
+<!ELEMENT perDay (#PCDATA)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT employees (employee)*>
+<!ELEMENT employee (name|surname|phone|mail|address)*>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT mail (#PCDATA)>
+<!ELEMENT address (city|street|postcode)*>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT postcode (#PCDATA)>
+<!ELEMENT rentlog (rental)*>
+<!ELEMENT rental (startdate|starttime|enddate|endtime)*>
+<!ATTLIST rental
+        idcar CDATA #REQUIRED>
+<!ELEMENT startdate (#PCDATA)>
+<!ELEMENT starttime (#PCDATA)>
+<!ELEMENT enddate (#PCDATA)>
+<!ELEMENT endtime (#PCDATA)>
