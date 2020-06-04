@@ -1,0 +1,178 @@
+carrental{
+    width: 650px;
+    padding: 5px;
+    background-color: cornflowerblue;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid white;
+    text-align: center;
+}
+
+id{
+    display: none;
+}
+
+color{
+    display: none;
+}
+
+model{
+    font-weight: bold;
+}
+
+price{
+    display: block;
+}
+
+perHour::before{
+    content: "Cena za godzinę: ";
+}
+
+perDay::before{
+    content: "Cena za dobę: ";
+}
+
+perDay::after{
+    content: " PLN";
+    font-size: 15px;
+}
+
+perHour::after{
+    content: " PLN";
+    font-size: 15px;
+}
+
+cars[class = 'standard']::before{
+    content: "Samochody klasa standard";
+    font-size: 25px;
+    font-weight: bold;
+    display: block;
+    padding: 5px;
+    background-color: skyblue;
+    margin: 5px;
+    width: 600;
+    text-align: center;
+}
+
+cars[class = 'premium']::before{
+    content: "Samochody klasa premium";
+    font-size: 25px;
+    font-weight: bold;
+    display: block;
+    padding: 5px;
+    background-color: skyblue;
+    margin: 5px;
+    width: 600;
+    text-align: center;
+}
+
+car::before{
+    content: id;
+    content: attr(brand);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+cars{
+    border: 1px solid black;
+    vertical-align: top;
+    display: grid;
+    margin: 20px;
+    background-color: skyblue;
+    display: block;
+    padding: 10px;
+}
+
+employees::before{
+    content: "Pracownicy";
+    font-size: 25px;
+    font-weight: bold;
+} 
+
+employees{
+    display: block;
+    padding: 5px;
+    background-color: lavender;
+    margin: 5px;
+    width: 600px;
+    border: 1px solid black;
+    text-align: center;
+    display: inline-block;
+}
+
+address{
+    display: block;
+}
+
+phone::before{
+    content: "nr. tel: ";
+    font-size: 15px;
+}
+
+mail::before{
+    content: "email: ";
+    font-size: 15px;
+}
+
+street::before{
+    content: "ul.";
+    font-size: 15px;
+}
+
+employee{
+    display: block;
+    padding: 5px;
+    margin: 5px;
+    width: 580px;
+    border: 1px solid black;
+    text-align: center;
+    display: inline-block;
+}
+
+rentlog::before{
+    content: "Historia wypożyczeń";
+    font-size: 25px;
+    font-weight: bold;
+}
+
+rentlog{
+    display: block;
+    padding: 5px;
+    background-color: aqua;
+    margin: 5px;
+    width: 600px;
+    border: 1px solid black;
+    text-align: center;
+    display: inline-block;
+}
+
+rental::before{
+    content:attr(idcar);
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+rental{
+    display: block;
+    padding: 5px;
+    margin: 5px;
+    width: 580px;
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+}
+
+startdate::before{
+    content: "Data i godzina rozpoczęcia: ";
+    font-size: 15px;
+    font-weight: bold;
+}
+
+enddate::before{
+    content: "Data i godzina rozpoczęcia: ";
+    font-size: 15px;
+    font-weight: bold;
+}
+

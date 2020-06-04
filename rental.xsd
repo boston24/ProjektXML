@@ -3,7 +3,7 @@
     <xs:element name="carrental">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="cars"/>
+                <xs:element maxOccurs="unbounded" ref="cars"/>
                 <xs:element ref="employees"/>
                 <xs:element ref="rentlog"/>
             </xs:sequence>
@@ -14,6 +14,7 @@
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="car"/>
             </xs:sequence>
+            <xs:attribute name="class" use="required" type="xs:NCName"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="car">
@@ -26,7 +27,6 @@
                 <xs:element ref="color"/>
             </xs:sequence>
             <xs:attribute name="brand" use="required" type="xs:NCName"/>
-            <xs:attribute name="class" use="required" type="xs:NCName"/>
             <xs:attribute name="doors" use="required" type="xs:integer"/>
             <xs:attribute name="type" use="required" type="xs:NCName"/>
         </xs:complexType>
@@ -90,15 +90,15 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="startdate"/>
-                <xs:element ref="enddate"/>
                 <xs:element ref="starttime"/>
+                <xs:element ref="enddate"/>
                 <xs:element ref="endtime"/>
             </xs:sequence>
             <xs:attribute name="idcar" use="required" type="xs:NCName"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="startdate" type="xs:NMTOKEN"/>
-    <xs:element name="enddate" type="xs:NMTOKEN"/>
     <xs:element name="starttime" type="xs:NMTOKEN"/>
-    <xs:element name="endtime" type="xs:string"/>
+    <xs:element name="enddate" type="xs:NMTOKEN"/>
+    <xs:element name="endtime" type="xs:NMTOKEN"/>
 </xs:schema>

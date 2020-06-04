@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <!DOCTYPE carrental [
         <!ELEMENT carrental (cars|employees|rentlog)*>
         <!ELEMENT cars (car)*>
+        <!ATTLIST cars
+                class CDATA #REQUIRED>
         <!ELEMENT car (id|model|year|price|color)*>
         <!ATTLIST car
                 brand CDATA #REQUIRED
-                class CDATA #REQUIRED
                 doors CDATA #REQUIRED
                 type CDATA #REQUIRED>
         <!ELEMENT id (#PCDATA)>
@@ -28,18 +28,18 @@
         <!ELEMENT street (#PCDATA)>
         <!ELEMENT postcode (#PCDATA)>
         <!ELEMENT rentlog (rental)*>
-        <!ELEMENT rental (startdate|enddate|starttime|endtime)*>
+        <!ELEMENT rental (startdate|starttime|enddate|endtime)*>
         <!ATTLIST rental
                 idcar CDATA #REQUIRED>
         <!ELEMENT startdate (#PCDATA)>
-        <!ELEMENT enddate (#PCDATA)>
         <!ELEMENT starttime (#PCDATA)>
+        <!ELEMENT enddate (#PCDATA)>
         <!ELEMENT endtime (#PCDATA)>
         ]>
 
 <carrental>
-    <cars>
-        <car class='standard' type='sedan' brand='Toyota' doors='5'>
+    <cars class='standard'>
+        <car type='sedan' brand='Toyota' doors='5'>
             <id>s1</id>
             <model>Prius</model>
             <year>2016</year>
@@ -49,7 +49,7 @@
             </price>
             <color>blue</color>
         </car>
-        <car class='standard' type='hatchback' brand='Honda' doors='5'>
+        <car type='hatchback' brand='Honda' doors='5'>
             <id>s2</id>
             <model>Civic</model>
             <year>2010</year>
@@ -59,7 +59,7 @@
             </price>
             <color>black</color>
         </car>
-        <car class='standard' type='sedan' brand='Ford' doors='5'>
+        <car type='sedan' brand='Ford' doors='5'>
             <id>s3</id>
             <model>Mondeo</model>
             <year>2012</year>
@@ -69,17 +69,8 @@
             </price>
             <color>grey</color>
         </car>
-        <car class='premium' type='sedan' brand='Mercedes' doors='5'>
-            <id>p1</id>
-            <model>C-Class</model>
-            <year>2016</year>
-            <price>
-                <perHour>15</perHour>
-                <perDay>150</perDay>
-            </price>
-            <color>blue</color>
-        </car>
-        <car class='standard' type='minivan' brand='Renault' doors='5'>
+        
+        <car type='minivan' brand='Renault' doors='5'>
             <id>s4</id>
             <model>Scenic</model>
             <year>2015</year>
@@ -89,17 +80,8 @@
             </price>
             <color>white</color>
         </car>
-        <car class='premium' type='suv' brand='Volvo' doors='5'>
-            <id>p2</id>
-            <model>XC60</model>
-            <year>2017</year>
-            <price>
-                <perHour>18</perHour>
-                <perDay>180</perDay>
-            </price>
-            <color>black</color>
-        </car>
-        <car class='standard' type='van' brand='Mercedes' doors='5'>
+        
+        <car type='van' brand='Mercedes' doors='5'>
             <id>s5</id>
             <model>Sprinter</model>
             <year>2016</year>
@@ -109,7 +91,7 @@
             </price>
             <color>yellow</color>
         </car>
-        <car class='standard' type='compact' brand='Fiat' doors='3'>
+        <car type='compact' brand='Fiat' doors='3'>
             <id>s6</id>
             <model>500</model>
             <year>2016</year>
@@ -119,17 +101,8 @@
             </price>
             <color>white</color>
         </car>
-        <car class='premium' type='coupe' brand='Ford' doors='3'>
-            <id>p3</id>
-            <model>Mustang</model>
-            <year>2016</year>
-            <price>
-                <perHour>18</perHour>
-                <perDay>180</perDay>
-            </price>
-            <color>red</color>
-        </car>
-        <car class='standard' type='minivan' brand='Ford' doors='5'>
+        
+        <car type='minivan' brand='Ford' doors='5'>
             <id>s7</id>
             <model>C-MAX</model>
             <year>2010</year>
@@ -139,7 +112,7 @@
             </price>
             <color>purple</color>
         </car>
-        <car class='standard' type='compact' brand='Smart' doors='3'>
+        <car type='compact' brand='Smart' doors='3'>
             <id>s8</id>
             <model>Fortwo</model>
             <year>2016</year>
@@ -149,7 +122,7 @@
             </price>
             <color>blue</color>
         </car>
-        <car class='premium' type='pickup' brand='Ford' doors='3'>
+        <car type='pickup' brand='Ford' doors='3'>
             <id>p4</id>
             <model>F-150</model>
             <year>2018</year>
@@ -160,6 +133,40 @@
             <color>grey</color>
         </car>
     </cars>
+    <cars class='premium'>
+        <car type='sedan' brand='Mercedes' doors='5'>
+            <id>p1</id>
+            <model>C-Class</model>
+            <year>2016</year>
+            <price>
+                <perHour>15</perHour>
+                <perDay>150</perDay>
+            </price>
+            <color>blue</color>
+        </car>
+        <car type='suv' brand='Volvo' doors='5'>
+            <id>p2</id>
+            <model>XC60</model>
+            <year>2017</year>
+            <price>
+                <perHour>18</perHour>
+                <perDay>180</perDay>
+            </price>
+            <color>black</color>
+        </car>
+        <car type='coupe' brand='Ford' doors='3'>
+            <id>p3</id>
+            <model>Mustang</model>
+            <year>2016</year>
+            <price>
+                <perHour>18</perHour>
+                <perDay>180</perDay>
+            </price>
+            <color>red</color>
+        </car>
+    </cars>
+
+
 
     <employees>
         <employee>
@@ -211,33 +218,33 @@
     <rentlog>
         <rental idcar='p2'>
             <startdate>2020-04-20</startdate>
+            <starttime>18:00</starttime>
             <enddate>2020-04-20</enddate>
-            <starttime>18:00</starttime>
-            <endtime>22:00></endtime>
+            <endtime>22:00</endtime>
         </rental>
-        <rental idcar='ps2'>
+        <rental idcar='s2'>
             <startdate>2020-05-20</startdate>
-            <enddate>2020-05-21</enddate>
             <starttime>18:00</starttime>
-            <endtime>10:00></endtime>
+            <enddate>2020-05-21</enddate>
+            <endtime>10:00</endtime>
         </rental>
         <rental idcar='s1'>
             <startdate>2020-04-10</startdate>
-            <enddate>2020-04-11</enddate>
             <starttime>10:00</starttime>
-            <endtime>10:00></endtime>
+            <enddate>2020-04-11</enddate>          
+            <endtime>10:00</endtime>
         </rental>
         <rental idcar='p5'>
             <startdate>2020-04-25</startdate>
-            <enddate>2020-04-27</enddate>
             <starttime>18:00</starttime>
-            <endtime>18:00></endtime>
+            <enddate>2020-04-27</enddate>          
+            <endtime>18:00</endtime>
         </rental>
-        <rental idcar='p1'>
+        <rental idcar='s5'>
             <startdate>2020-04-21</startdate>
-            <enddate>2020-04-21</enddate>
             <starttime>12:00</starttime>
-            <endtime>18:00></endtime>
+            <enddate>2020-04-21</enddate>          
+            <endtime>18:00</endtime>
         </rental>
     </rentlog>
 
